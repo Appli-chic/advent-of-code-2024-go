@@ -61,9 +61,8 @@ func calculate(reports [][]int) int {
 
 func checkSafetyWithOneMistake(report []int) bool {
 	for index, _ := range report {
-		newReport := make([]int, len(report)-1)
-		copy(newReport, report[:index])
-		copy(newReport[index:], report[index+1:])
+		newReport := append([]int(nil), report[:index]...)
+		newReport = append(newReport, report[index+1:]...)
 		if isReportSafe(newReport) {
 			return true
 		}
